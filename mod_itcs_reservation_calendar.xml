@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.x" client="site" method="upgrade">
+	<name>itcs simple reservation Calendar</name>
+	<author>it-conserv.de</author>
+	<creationDate>January 2022</creationDate>
+	<copyright>Copyright (C) 2022 it-conserv.de</copyright>
+	<license>GNU General Public License version 3 or later and bootstrap datepicker is a licensed under Apache license V2.0</license>
+	<authorEmail>info@it-conserv.de</authorEmail>
+	<authorUrl>www.it-conserv.de</authorUrl>
+	<version>4.0.2</version>
+	<description>
+	<![CDATA[
+	<div align="center">
+		<div class="alert alert-success" style="background-color:#DFF0D8;border-color:#D6E9C6;color: #468847;padding: 1px 0;">
+			<h2 style="color: #f39c12;">Simple Reservation Calendar</h2>
+			<h4>with bootstrap datepicker script</h4>
+			<p> </p>
+			<h5>Create a simple reservation calendar with seperate public information</h5>
+			<p align="left" style="padding: 0 1em;">Choice of 3 different colours to display different reservations. The stored information can be made visible for certain access levels. Below the calendar the reserved days can be displayed as a list.</p>
+			<p align="left" style="padding: 0 1em;">The Pro version contains more functions than the Free version.</p>
+			<p>Copyright 2022 <a href="http://www.it-conserv.de/" title="it-conserv.de" target="_blank">www.it-conserv.de</a>.</p>
+		</div>
+	</div>
+		]]>
+	</description>
+	<namespace>ITCS\Module\ItcsReservationCalendar</namespace>
+	<languages>
+		<language tag="en-GB">language/en-GB/mod_itcs_reservation_calendar.ini</language>
+		<language tag="de-DE">language/de-DE/mod_itcs_reservation_calendar.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_itcs_reservation_calendar.ini</language>
+		<language tag="fi-FI">language/fi-FI/mod_itcs_reservation_calendar.ini</language>
+		<language tag="it-IT">language/it-IT/mod_itcs_reservation_calendar.ini</language>
+	</languages>	
+	<files>
+		<filename module="mod_itcs_reservation_calendar">mod_itcs_reservation_calendar.php</filename>
+		<filename>ItcsReservationCalendarHelper.php</filename>
+		<filename>lizenz_gpl.txt</filename>
+		<filename>script.php</filename>
+		<folder>assets</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<scriptfile>script.php</scriptfile>
+
+	<updateservers>
+		<server type="extension" priority="2" name="Modul itcs reservation Calendar">
+			https://it-conserv.de/phocadownload/module/mod_itcs_reservation_calendar/mod_itcs_reservation_calendar-update.xml
+		</server>
+	</updateservers>
+	<changelogurl>https://it-conserv.de/phocadownload/module/mod_itcs_reservation_calendar/mod_itcs_reservation_calendar-changelog.xml</changelogurl>
+	<config>
+		<fields name="params"  addfieldpath="/modules/mod_itcs_reservation_calendar/assets/elements">
+			<fieldset name="GENERAL_SETTINGS">
+				<field name="itcsdonation" type="itcsdonation" label="ITCS_DONATION" description="ITCS_DONATION_DESC"/>
+				<field name="cal_basic_settings" type="spacer" label="CAL_BASIC_SETTINGS" />				
+				<field
+					name="colors"
+					type="subform"
+					label="CAL_COLORS"
+					layout="joomla.form.field.subform.repeatable-table"
+				>
+					<form>
+						<field name="color1" type="color" format="rgb" default="rgb(225 ,80, 80)" label="CAL_COLOR_1" description="CAL_COLOR_1_DESC" />
+						<field name="color2" type="color" format="rgb" default="rgb(100, 200, 100)" label="CAL_COLOR_2" description="CAL_COLOR_2_DESC" />
+						<field name="color3" type="color" format="rgb" default="rgb(50, 100, 150)" label="CAL_COLOR_3" description="CAL_COLOR_3_DESC" />
+					</form>
+				</field>
+				<field name="legend_show" type="radio" label="CAL_LEGEND_SHOW" description="CAL_LEGEND_SHOW_DESC" checked="checked" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="color_text"
+					type="subform"
+					showon="legend_show:1"
+					label="CAL_LEGEND_COLORS"
+					description="CAL_LEGEND_COLORS_DESC"
+					layout="joomla.form.field.subform.repeatable-table"
+				>
+					<form>
+						<field name="color1_text" type="text" default="" label="CAL_LEGEND_COLOR1" />
+						<field name="color2_text" type="text" default="" label="CAL_LEGEND_COLOR2" />
+						<field name="color3_text" type="text" default="" label="CAL_LEGEND_COLOR3" />
+					</form>
+				</field>
+
+				<field name="day_format" type="text" default="d.m.Y" label="CAL_DAY_FORMAT" disabled="true" description="CAL_DAY_FORMAT_DESC" />
+
+				<field name="free_day_click" type="radio" label="CAL_FREE_DAY_CLICK" description="CAL_FREE_DAY_CLICK_DESC" checked="checked" default="0" disabled="true" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="free_day_item" type="menuitem" showon="free_day_click:1" disabled="true" label="CAL_FREE_DAY_MENU_ITEM" description="CAL_FREE_DAY_MENU_ITEM_DESC" />
+
+				<field name="public_override" type="radio" label="CAL_PUBLIC_OVERRIDE" description="CAL_PUBLIC_OVERRIDE_DESC" checked="checked" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>				
+				<field name="public_text" type="text" showon="public_override:1" default="RESERVED" label="CAL_PUBLIC_TEXT" description="CAL_PUBLIC_TEXT_DESC" />
+				<field name="access" type="accesslevel" showon="public_override:1" multiple="true" label="JFIELD_ACCESS_LABEL" description="CAL_JFIELD_ACCESS_DESC" class="small" />
+				<field name="show_list_modal" type="radio" showon="public_override:1" disabled="true" label="CAL_LIST_MODAL" description="CAL_LIST_MODAL_DESC" checked="checked" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>				
+				<field name="show_day_list" type="radio" showon="public_override:1" checked="checked" default="0" class="btn-group btn-group-yesno" label="CAL_SHOW_DAY_LIST" description="CAL_SHOW_DAY_LIST_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="list_days" type="number" showon="public_override:1[AND]show_day_list:1" min="0" max="360" step="1" default="0" size="3" label="CAL_LIST_DAYS" description="CAL_LIST_DAYS_DESC" />
+				<field name="auto_delete" type="radio" label="CAL_AUTO_DELETE" description="CAL_AUTO_DELETE_DESC" checked="checked" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="del_days_note" type="note"  showon="auto_delete:1" label="CAL_DEL_DAYS_NOTE" description="CAL_DEL_DAYS_NOTE_DESC" />
+				<field name="del_days" type="number"  showon="auto_delete:1" min="0" max="360" step="1" default="0" size="3" label="CAL_DEL_DAYS" description="CAL_DEL_DAYS_DESC" />
+			</fieldset>
+			
+			<fieldset name="days">
+				<field 
+					name="resdays" 
+					type="subform"
+					formsource="modules/mod_itcs_reservation_calendar/assets/elements/subform.xml" 
+					min="1" 
+					max="200" 
+					multiple="true" 
+					layout="joomla.form.field.subform.repeatable" 
+					label="CAL_RES_DAYS" 
+					description="CAL_RES_DAYS_DESC" 
+				/>
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="cachemode" type="hidden" default="itemid">
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

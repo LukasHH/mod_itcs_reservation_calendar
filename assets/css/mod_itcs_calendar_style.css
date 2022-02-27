@@ -1,0 +1,158 @@
+/**
+*  mod_itcs_reservation_calendar - simple reservation calendar by it-conserv.de
+*  with bootstrap datepicker script https://github.com/uxsolutions/bootstrap-datepicker
+* ------------------------------------------------------------------------
+* @package     itcs reservation calendar
+* @author      it-conserv.de
+* @copyright   2022 it-conserv.de
+* @license     GNU/GPLv3 <http://www.gnu.org/licenses/gpl-3.0.de.html>
+* @link        https://it-conserv.de
+* ------------------------------------------------------------------------
+*/
+
+.itcs_calendar{
+	justify-content: center;
+	text-align: center;
+
+	--bg-hd1-color: 220, 80, 80;
+	--bg-hd2-color: 100, 220, 100;
+	--bg-opacity1: .8;
+	--bg-opacity2: 1;
+}
+
+.printable,
+.printable.itcs_calendar th,
+.printable.itcs_calendar td span{
+	color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+}
+
+.datepicker{
+	background-color: #efefef;
+	color: #202020;
+    margin: 0 auto;
+	padding: 0 15px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+	-o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+	-webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.datepicker table tr td.today:hover {
+	border-color: #ffb733;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+	-o-box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+.datepicker table tr td.disabled{
+	color: #aaa;
+}
+
+.datepicker table tr td.disabled.day,
+.datepicker table tr td.reserved.day {
+	cursor: auto;
+}
+
+.datepicker table tr td.reserved,
+.datepicker table tr td.reserved:hover{
+	color: #f0f0f0;
+}
+
+/* tooltip*/
+.datepicker table tr td.tt {
+  position: relative;
+  text-decoration: none;
+}
+
+.datepicker table tr td.tt:after{
+  content: "";
+  position: absolute;
+  background: #ffcb66;
+  left: 20%;
+  color: black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius : 5px;
+  border-radius : 5px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity:0;
+  transition:visibility 0.5s linear,opacity 0.5s linear;  
+}
+
+.datepicker table tr td.tt:hover:after {
+  content: attr(title);
+  padding: 3px 5px;
+  bottom: 100%;
+  visibility: visible;
+  opacity:1;
+}
+
+.datepicker table tr td{
+	padding: 0px 3px;
+	vertical-align: middle;
+}
+
+.datepicker table tr td.hd1 {
+	background-image: linear-gradient(-45deg, rgba(var(--bg-hd1-color), var(--bg-opacity1)) 50%, rgba(var(--bg-hd2-color), var(--bg-opacity1)) 50%);
+}
+  
+.datepicker table tr td.hd2 {
+	background-image: linear-gradient(90deg, rgba(var(--bg-hd1-color), var(--bg-opacity1)) 100%, rgba(var(--bg-hd2-color), var(--bg-opacity1)) 0%);
+}
+  
+.datepicker table tr td.hd3 {
+	background-image: linear-gradient(45deg, rgba(var(--bg-hd1-color), var(--bg-opacity1)) 50%, rgba(var(--bg-hd2-color), var(--bg-opacity1)) 50%) !important;
+}
+
+.datepicker table tr td.hd1:hover {
+	background-image: linear-gradient(-45deg, rgba(var(--bg-hd1-color), var(--bg-opacity2)) 50%, rgba(var(--bg-hd2-color), var(--bg-opacity2)) 50%);
+}
+  
+.datepicker table tr td.hd2:hover {
+	background-image: linear-gradient(90deg, rgba(var(--bg-hd1-color), var(--bg-opacity2)) 100%, rgba(var(--bg-hd2-color), var(--bg-opacity2)) 0%);
+}
+  
+.datepicker table tr td.hd3:hover {
+	background-image: linear-gradient(45deg, rgba(var(--bg-hd1-color), var(--bg-opacity2)) 50%, rgba(var(--bg-hd2-color), var(--bg-opacity2)) 50%) !important;
+}
+
+/* ##########   L e g e n d e   ############### */
+.itcs_calendar .legend{
+	display: inline-block;
+    font-size: 0.7em;
+    margin-top: 1em;
+}
+
+.itcs_calendar .legend p{
+	margin: 0.3em 0.7em;
+	float: left;
+	line-height: 1em;
+}
+
+.itcs_calendar .legend p::before,
+.itcs_calendar td p::before,
+.itcs_calendar td span
+{
+	content:'';
+	display: inline-block;
+	min-width: 1em;
+	height: 1em;
+	margin-right: 0.3em;
+	opacity: var(--bg-opacity1);
+	vertical-align: middle;
+	border-radius: 0.25em;
+}
+
+/* ##########   L i s t   ############### */
+.itcs_calendar .liste{
+	width:100%;
+	display: block;
+	float: none;
+	margin-top:10px;
+}
+
+.itcs_calendar .legend p.color0::before{
+	background-color: #ffb733;
+}
