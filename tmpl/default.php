@@ -54,6 +54,7 @@ use \Joomla\CMS\Date\Date;
 		forceParse: false,
 		todayHighlight: true,
 		beforeShowDay: function (date){
+			date.setMinutes(date.getMinutes() - date.getTimezoneOffset()); // fix offset to utc
 			var chkDate = Math.round(date.getTime()/1000); // get timestamp
 			var r ='';
       		var c ='';
