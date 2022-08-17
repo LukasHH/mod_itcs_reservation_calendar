@@ -111,7 +111,7 @@ class ItcsReservationCalendarHelper
 				$cal_day_count = (!empty($item->cal_day_count))?intval($item->cal_day_count):1;
 				for($i=0; $i < $cal_day_count; $i++) {
 					
-					$cal_day = new \DateTime($item->cal_day);
+					$cal_day = new Date($item->cal_day, new \DateTimeZone('UTC'));
 					$cal_day->setTime(0, 0, 0);
 					$cal_day->modify('+'.$i.' day');
 

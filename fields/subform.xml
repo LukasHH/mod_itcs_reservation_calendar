@@ -11,6 +11,7 @@
 		filltable="false" 
 		translateformat="true"
 		weeknumbers="false"
+		filter="server_utc"
 	/>	
 	<field name="cal_day_count" type="number" default="1" label="CAL_DAY_COUNT" description="CAL_DAY_COUNT_DESC" min="1" max="100" step="1" />
 	<field name="cal_day_color" type="list" default="1" label="CAL_DAY_COLOR" description="CAL_DAY_COLOR_DESC">

@@ -1,0 +1,75 @@
+{
+	"$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+	"name": "mod_itcs_reservation_calendar",
+	"version": "4.0.2",
+	"description": "itcs_reservation_calendar modul",
+	"license": "GPL-3.0-or-later",
+	"assets": [
+		{
+			"name": "mod_itcs_reservation_calendar.style",
+			"description": "itcs_reservation_calendar CSS",
+			"type": "style",
+			"uri": "mod_itcs_reservation_calendar/mod_itcs_calendar_style.css"		
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.datepicker",
+			"description": "BS Datepicker CSS",
+			"type": "style",
+			"uri": "mod_itcs_reservation_calendar/bootstrap-datepicker3.min.css"		
+		},		
+		{
+			"name": "mod_itcs_reservation_calendar.datepicker",
+			"description": "BS Datepicker JavaScript",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/bootstrap-datepicker.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.de-DE",
+			"description": "BS Datepicker language",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/locales/bootstrap-datepicker.de-DE.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.en-GB",
+			"description": "BS Datepicker language",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/locales/bootstrap-datepicker.en-GB.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.fi-FI",
+			"description": "BS Datepicker language",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/locales/bootstrap-datepicker.fi-FI.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.fr-FR",
+			"description": "BS Datepicker language",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/locales/bootstrap-datepicker.fr-FR.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.it-IT",
+			"description": "BS Datepicker language",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/locales/bootstrap-datepicker.it-IT.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		}
+	]
+}

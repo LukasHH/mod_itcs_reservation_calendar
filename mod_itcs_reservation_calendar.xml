@@ -2,12 +2,12 @@
 <extension type="module" version="3.x" client="site" method="upgrade">
 	<name>itcs simple reservation Calendar</name>
 	<author>it-conserv.de</author>
-	<creationDate>January 2022</creationDate>
+	<creationDate>August 2022</creationDate>
 	<copyright>Copyright (C) 2022 it-conserv.de</copyright>
 	<license>GNU General Public License version 3 or later and bootstrap datepicker is a licensed under Apache license V2.0</license>
 	<authorEmail>info@it-conserv.de</authorEmail>
 	<authorUrl>www.it-conserv.de</authorUrl>
-	<version>4.0.2</version>
+	<version>4.0.3</version>
 	<description>
 	<![CDATA[
 	<div align="center">
@@ -36,10 +36,17 @@
 		<filename>ItcsReservationCalendarHelper.php</filename>
 		<filename>lizenz_gpl.txt</filename>
 		<filename>script.php</filename>
-		<folder>assets</folder>
+		<folder>fields</folder>
 		<folder>language</folder>
+		<folder>media</folder>
 		<folder>tmpl</folder>
 	</files>
+
+	<media folder="media" destination="mod_itcs_reservation_calendar">
+		<folder>css</folder>
+		<folder>js</folder>
+		<file>joomla.asset.json</file>
+	</media>
 
 	<scriptfile>script.php</scriptfile>
 
@@ -50,7 +57,7 @@
 	</updateservers>
 	<changelogurl>https://it-conserv.de/phocadownload/module/mod_itcs_reservation_calendar/mod_itcs_reservation_calendar-changelog.xml</changelogurl>
 	<config>
-		<fields name="params"  addfieldpath="/modules/mod_itcs_reservation_calendar/assets/elements">
+		<fields name="params"  addfieldpath="/modules/mod_itcs_reservation_calendar/fields">
 			<fieldset name="GENERAL_SETTINGS">
 				<field name="itcsdonation" type="itcsdonation" label="ITCS_DONATION" description="ITCS_DONATION_DESC"/>
 				<field name="cal_basic_settings" type="spacer" label="CAL_BASIC_SETTINGS" />				
@@ -120,7 +127,7 @@
 				<field 
 					name="resdays" 
 					type="subform"
-					formsource="modules/mod_itcs_reservation_calendar/assets/elements/subform.xml" 
+					formsource="modules/mod_itcs_reservation_calendar/fields/subform.xml" 
 					min="1" 
 					max="200" 
 					multiple="true" 

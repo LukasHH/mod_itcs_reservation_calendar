@@ -23,8 +23,8 @@
 .printable,
 .printable.itcs_calendar th,
 .printable.itcs_calendar td span{
-	color-adjust:exact;
-    -webkit-print-color-adjust:exact;
+	color-adjust: exact;
+    -webkit-print-color-adjust: exact;
 }
 
 .datepicker{

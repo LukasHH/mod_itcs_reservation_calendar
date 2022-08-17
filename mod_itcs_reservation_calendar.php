@@ -44,9 +44,6 @@ $color_1	= $colors->color1;
 $color_2	= $colors->color2;
 $color_3	= $colors->color3;
 
-//$day_format	= $params->get('day_format','d.m.Y');
-
-
 // Show Legend
 $show_legend	= $params->get('legend_show');
 $color_text		= $params->get('color_text');
@@ -60,18 +57,17 @@ $access_level		= $params->get('access');
 $public_text		= $params->get('public_text');
 $show_day_list		= $params->get('show_day_list');
 $list_days_count	= $params->get('list_days');
-//$show_list_modal	= $params->get('show_list_modal');
 
 
 // Load CSS/JS
 $document = Factory::getDocument();
 
-$document->addStylesheet(URI::base(true) . '/modules/mod_itcs_reservation_calendar/assets/css/bootstrap-datepicker3.min.css');
-$document->addStylesheet(URI::base(true) . '/modules/mod_itcs_reservation_calendar/assets/css/mod_itcs_calendar_style.css');
+$document->addStylesheet(URI::base(true) . '/media/mod_itcs_reservation_calendar/css/bootstrap-datepicker3.min.css');
+$document->addStylesheet(URI::base(true) . '/media/mod_itcs_reservation_calendar/css/mod_itcs_calendar_style.css');
 
 //Scripte
-$document->addScript(URI::base(true) . '/modules/mod_itcs_reservation_calendar/assets/js/bootstrap-datepicker.min.js');
-$document->addScript(URI::base(true) . '/modules/mod_itcs_reservation_calendar/assets/locales/bootstrap-datepicker.'.$lang.'.min.js');
+$document->addScript(URI::base(true) . '/media/mod_itcs_reservation_calendar/js/bootstrap-datepicker.min.js');
+$document->addScript(URI::base(true) . '/media/mod_itcs_reservation_calendar/js/locales/bootstrap-datepicker.'.$lang.'.min.js');
 
 // Load and set colors
 $re = '/rgb\(([0-9|\,|\s]*)\)/';

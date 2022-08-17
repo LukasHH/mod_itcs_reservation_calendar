@@ -54,7 +54,7 @@ use \Joomla\CMS\Date\Date;
 		forceParse: false,
 		todayHighlight: true,
 		beforeShowDay: function (date){
-			var chkDate = Math.round(date.getTime()/1000); // get timestamp
+			var chkDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())/1000; // get timestamp
 			var r ='';
       		var c ='';
 
