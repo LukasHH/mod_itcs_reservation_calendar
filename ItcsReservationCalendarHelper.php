@@ -96,14 +96,15 @@ class ItcsReservationCalendarHelper
      * get Day - Preparing the days
      *
      * @param	object	$days containing cal_day, cal_day_count, cal_day_color, cal_day_info
-     * @param	int		$demo contains yes = 1 or no = 0
 	 * @param	string	$format contains the php date format e.g. 'd.m.Y'
 	 * @param	string	$override the public info text
 	 * @return	array	reservation days with informations
      */  	
-	public static function getDays($days, $demo, $format, $override)
+	public static function getDays($days, $format, $override)
 	{
 		$resdays = array();
+		$tz = Factory::getConfig()->get('offset');
+
 		foreach($days as $item){
 
 			if(!empty($item->cal_day)){
@@ -111,7 +112,8 @@ class ItcsReservationCalendarHelper
 				$cal_day_count = (!empty($item->cal_day_count))?intval($item->cal_day_count):1;
 				for($i=0; $i < $cal_day_count; $i++) {
 					
-					$cal_day = new Date($item->cal_day, new \DateTimeZone('UTC'));
+					$cal_day = new \DateTime($item->cal_day, new \DateTimeZone('UTC'));
+					$cal_day->setTimezone(new \DateTimeZone($tz));
 					$cal_day->setTime(0, 0, 0);
 					$cal_day->modify('+'.$i.' day');
 
@@ -144,6 +146,7 @@ class ItcsReservationCalendarHelper
 	{
 		$counter = 1;
 		$today = new \DateTime();
+		$tz = Factory::getConfig()->get('offset');
 		$list = '';
 
 		foreach($days as $item){
@@ -152,9 +155,12 @@ class ItcsReservationCalendarHelper
 		
 				$cal_day_count = (!empty($item->cal_day_count))?intval($item->cal_day_count):1;
 
-				$day_from = new \DateTime($item->cal_day);
+				$day_from = new \DateTime($item->cal_day, new \DateTimeZone('UTC'));
+				$day_from->setTimezone(new \DateTimeZone($tz));
 				$day_from->setTime(0, 0, 0);
-				$date_to = new \DateTime($item->cal_day);
+
+				$date_to = new \DateTime($item->cal_day, new \DateTimeZone('UTC'));
+				$date_to->setTimezone(new \DateTimeZone($tz));
 				$date_to->setTime(0, 0, 0);
 
 				if($cal_day_count > 1){				

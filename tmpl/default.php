@@ -15,7 +15,6 @@
 defined( '_JEXEC' ) or die;
 use Joomla\CMS\Language\Text;
 use \Joomla\CMS\HTML\HTMLHelper;
-use \Joomla\CMS\Date\Date;
 
 ?>
 
@@ -54,12 +53,15 @@ use \Joomla\CMS\Date\Date;
 		forceParse: false,
 		todayHighlight: true,
 		beforeShowDay: function (date){
-			var chkDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())/1000; // get timestamp
+			var chkDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()); // get utc timestamp
 			var r ='';
       		var c ='';
 
 			disableDays_<?php echo 'id'.$uniqid; ?>.forEach(disableDay => {
-				if(disableDay.t == chkDate){
+				var ndate = new Date(disableDay.t*1000); // create Date from php timestamp
+				var nutc = Date.UTC(ndate.getFullYear(), ndate.getMonth(), ndate.getDate()); // get utc timestamp
+
+				if(nutc == chkDate){
 				r = disableDay.cal_day_info;
 				c = 'reserved tt ' + disableDay.cal_day_color;
 				}
