@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 <fieldset name="cal_res_days_modal" class="subform-subform">
-	<field 
-		name="cal_day" 
-		type="calendar" 
-		label="CAL_DAY_SELECT" 
-		description="" 
-		class="input-small" 
-		todaybutton="true" 
-		filltable="false" 
-		translateformat="true"
-		weeknumbers="false"
-		filter="server_utc"
-	/>	
+	<field
+		name="cal_day"
+		type="itcsdate"
+		label="CAL_DAY_SELECT"
+		description=""
+	/>
 	<field name="cal_day_count" type="number" default="1" label="CAL_DAY_COUNT" description="CAL_DAY_COUNT_DESC" min="1" max="100" step="1" />
 	<field name="cal_day_color" type="list" default="1" label="CAL_DAY_COLOR" description="CAL_DAY_COLOR_DESC">
 		<option value="1">CAL_DAY_COLOR_1</option>

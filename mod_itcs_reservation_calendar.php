@@ -144,9 +144,7 @@ if ($demo == 1){
 	$days = (object)$ddays;
 }
 
-
-// $demo 0 = off, 1 = on
-$resdays = ItcsReservationCalendarHelper::getDays($days, 0, $day_format, $public_text);
+$resdays = ItcsReservationCalendarHelper::getDays($days, $day_format, $public_text);
 
 $tableList = ItcsReservationCalendarHelper::getList($days, $list_days_count, $day_format);
 

@@ -24,10 +24,12 @@ use \Joomla\CMS\Date\Date;
   	<?php if ($show_legend==1): ?>
 	<!-- Legende -->
     <div class="legend">
-		<p class="color0"><?php echo Text::_('CAL_TODAY'); ?></p>
-  		<?php if ($color1_text != ""): ?><p class="color1"><?php echo $color1_text; ?></p><?php endif; ?>
-  		<?php if ($color2_text != ""): ?><p class="color2"><?php echo $color2_text; ?></p><?php endif; ?>
-  		<?php if ($color3_text != ""): ?><p class="color3"><?php echo $color3_text; ?></p><?php endif; ?>
+		<div>
+			<p class="color0"><?php echo Text::_('CAL_TODAY'); ?></p>
+			<?php if ($color1_text != ""): ?><p class="color1"><?php echo $color1_text; ?></p><?php endif; ?>
+			<?php if ($color2_text != ""): ?><p class="color2"><?php echo $color2_text; ?></p><?php endif; ?>
+			<?php if ($color3_text != ""): ?><p class="color3"><?php echo $color3_text; ?></p><?php endif; ?>
+		</div>
   	</div>
   	<?php endif; ?>
 	

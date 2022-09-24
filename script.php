@@ -225,6 +225,73 @@ class mod_Itcs_Reservation_CalendarInstallerScript
 				return true;
 			}
 
+			// Update to 4.0.4
+			if (version_compare($res->version, '4.0.4', '<')){
+
+				$re = '/(\d{2}:\d{2}:\d{2})/';
+				$tz = Factory::getConfig()->get('offset');
+
+				//Request used modules
+				$query = $db->getQuery(true);
+				$query->select($db->quoteName(array('id','params')));
+				$query->from($db->quoteName('#__modules'));
+				$query->where($db->quoteName('module') . ' = ' . $db->quote('mod_itcs_reservation_calendar'));
+			
+				$db->setQuery($query);
+
+				// get Update Parameters
+				if($row = $db->loadAssocList()){
+					foreach($row AS $i){
+
+						$params = json_decode($i['params']);
+
+						// Prüfe ob Tage vorhanden sind
+						if(!empty($params->resdays)){
+
+							Log::add('Old Params (id: '.$i['id'].'): ', LOG::INFO, 'itcsResCalMsg');
+							Log::add(print_r($params->resdays, true), LOG::INFO, 'itcsResCalMsg');
+
+							//Update durchführen
+							foreach($params->resdays AS $item=>$value){
+																						
+								preg_match($re, $value->cal_day, $matches, PREG_OFFSET_CAPTURE, 0);
+								$cal_day = new \DateTime($value->cal_day, new \DateTimeZone('UTC'));
+								if($matches){
+									$cal_day->setTimezone(new \DateTimeZone($tz));
+								}
+								$cal_day->setTime(0, 0, 0);
+								$params->resdays->{$item}->cal_day = $cal_day->format('Y-m-d');
+
+							}
+	
+							Log::add('New Params (id: '.$i['id'].'): ', LOG::INFO, 'itcsResCalMsg');
+							Log::add(print_r($params->resdays, true), LOG::INFO, 'itcsResCalMsg');
+	
+							// Update the params for new version
+							$object = new stdClass();
+							$object->id = $i['id'];
+							$object->params = json_encode($params);
+							$result = Factory::getDbo()->updateObject('#__modules', $object, 'id');
+							
+							$msg .= '<br><i class="icon icon-ok"></i>Parameters for Modul with ID: '.$i['id'].' was updated';
+							Log::add('Module with id: '.$i['id'].' was updated ', LOG::INFO, 'itcsResCalMsg');						
+						}					
+					}
+				}
+
+				// Output Message
+				if(!empty($msg)){
+					echo '<div class="alert alert-info span6 offset3">';
+					echo '<p><strong>'.$type.'</strong></p>';
+					echo '<p>The module with parameters were migrated from '.$res->version.' to the new version.</p>';
+					echo '<p>'.$msg.'</p>';
+					echo '</div>';
+				
+					Log::add('END Preflight with update', LOG::INFO, 'itcsResCalMsg');
+					return true;				
+				}
+			}
+
 			Log::add('END Preflight without update', LOG::INFO, 'itcsResCalMsg');
 			return true;
 		}
