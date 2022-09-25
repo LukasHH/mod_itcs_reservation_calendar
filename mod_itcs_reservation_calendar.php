@@ -35,7 +35,8 @@ $lang = (substr($lang, 0, 2) == 'de')?'de-DE':$lang;
 $lang = (substr($lang, 0, 2) == 'fr')?'fr-FR':$lang;
 $lang = (substr($lang, 0, 2) == 'fi')?'fi-FI':$lang;
 $lang = (substr($lang, 0, 2) == 'it')?'it-IT':$lang;
-$lang = ($lang != 'de-DE' && $lang != 'fr-FR' && $lang != 'fi-FI' && $lang != 'it-IT')?'en-GB':$lang;
+$lang = (substr($lang, 0, 2) == 'it')?'es-ES':$lang;
+$lang = ($lang != 'de-DE' && $lang != 'fr-FR' && $lang != 'fi-FI' && $lang != 'it-IT' && $lang != 'es-ES')?'en-GB':$lang;
 $day_format = ($lang != 'de-DE' && $lang != 'fr-FR' && $lang != 'fi-FI')?'d/m/Y':'d.m.Y';
 
 // BASIC SETTINGS
