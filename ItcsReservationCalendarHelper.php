@@ -103,7 +103,7 @@ class ItcsReservationCalendarHelper
 	public static function getDays($days, $format, $override)
 	{
 		$resdays = array();
-		$tz = Factory::getConfig()->get('offset');
+		$tz = Factory::getApplication()->get('offset');
 
 		foreach($days as $item){
 
@@ -146,7 +146,7 @@ class ItcsReservationCalendarHelper
 	{
 		$counter = 1;
 		$today = new \DateTime();
-		$tz = Factory::getConfig()->get('offset');
+		$tz = Factory::getApplication()->get('offset');
 		$list = '';
 
 		foreach($days as $item){
