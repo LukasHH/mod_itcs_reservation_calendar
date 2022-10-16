@@ -35,7 +35,8 @@ $lang = (substr($lang, 0, 2) == 'de')?'de-DE':$lang;
 $lang = (substr($lang, 0, 2) == 'fr')?'fr-FR':$lang;
 $lang = (substr($lang, 0, 2) == 'fi')?'fi-FI':$lang;
 $lang = (substr($lang, 0, 2) == 'it')?'it-IT':$lang;
-$lang = ($lang != 'de-DE' && $lang != 'fr-FR' && $lang != 'fi-FI' && $lang != 'it-IT')?'en-GB':$lang;
+$lang = (substr($lang, 0, 2) == 'it')?'es-ES':$lang;
+$lang = ($lang != 'de-DE' && $lang != 'fr-FR' && $lang != 'fi-FI' && $lang != 'it-IT' && $lang != 'es-ES')?'en-GB':$lang;
 $day_format = ($lang != 'de-DE' && $lang != 'fr-FR' && $lang != 'fi-FI')?'d/m/Y':'d.m.Y';
 
 // BASIC SETTINGS
@@ -146,7 +147,7 @@ if ($demo == 1){
 
 
 // $demo 0 = off, 1 = on
-$resdays = ItcsReservationCalendarHelper::getDays($days, 0, $day_format, $public_text);
+$resdays = ItcsReservationCalendarHelper::getDays($days, $day_format, $public_text);
 
 $tableList = ItcsReservationCalendarHelper::getList($days, $list_days_count, $day_format);
 
