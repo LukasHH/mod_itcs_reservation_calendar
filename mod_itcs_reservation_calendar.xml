@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 3 or later and bootstrap datepicker is a licensed under Apache license V2.0</license>
 	<authorEmail>info@it-conserv.de</authorEmail>
 	<authorUrl>www.it-conserv.de</authorUrl>
-	<version>4.0.4</version>
+	<version>4.0.5</version>
 	<description>
 	<![CDATA[
 	<div align="center">
@@ -30,6 +30,7 @@
 		<language tag="fr-FR">language/fr-FR/mod_itcs_reservation_calendar.ini</language>
 		<language tag="fi-FI">language/fi-FI/mod_itcs_reservation_calendar.ini</language>
 		<language tag="it-IT">language/it-IT/mod_itcs_reservation_calendar.ini</language>
+		<language tag="es-ES">language/es-ES/mod_itcs_reservation_calendar.ini</language>
 	</languages>	
 	<files>
 		<filename module="mod_itcs_reservation_calendar">mod_itcs_reservation_calendar.php</filename>

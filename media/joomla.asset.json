@@ -70,6 +70,15 @@
 			"dependencies": [
 				"jquery"
 			]
-		}
+		},
+		{
+			"name": "mod_itcs_reservation_calendar.es-ES",
+			"description": "BS Datepicker language",
+			"type": "script",
+			"uri": "mod_itcs_reservation_calendar/locales/bootstrap-datepicker.es-ES.min.js",
+			"dependencies": [
+				"jquery"
+			]
+		}		
 	]
 }
